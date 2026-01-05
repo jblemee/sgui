@@ -1,32 +1,32 @@
 modLoader="javafml"
 loaderVersion="[4,)"
-issueTrackerURL="https://github.com/Patbox/sgui/issues"
+issueTrackerURL="https://github.com/jblemee/servui/issues"
 license="LGPLv3"
 
 [[mods]]
-modId="sgui"
+modId="servui"
 version="${version}"
-displayName="Server GUI"
-displayURL="https://github.com/Patbox/sgui/releases"
+displayName="ServUI"
+displayURL="https://github.com/jblemee/servui/releases"
 logoFile="icon.png"
-authors="Patbox,aws404"
+authors="Patbox,aws404,lemee"
 description='''Library for creating server side guis!'''
 displayTest="IGNORE_ALL_VERSION"
 
 [[mixins]]
-    config="sgui.mixins.json"
+    config="servui.mixins.json"
 
 [[mixins]]
-    config="sgui.neoforge.mixins.json"
+    config="servui.neoforge.mixins.json"
 
-[[dependencies.sgui]]
+[[dependencies.servui]]
     modId="neoforge"
     type="required"
     versionRange="[21.10,)"
     ordering="NONE"
     side="BOTH"
 
-[[dependencies.sgui]]
+[[dependencies.servui]]
     modId="minecraft"
     type="required"
     versionRange="[1.21.10,)"

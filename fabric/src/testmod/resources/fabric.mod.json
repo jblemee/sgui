@@ -1,16 +1,17 @@
 {
   "schemaVersion": 1,
-  "id": "sgui-testmod",
+  "id": "servui-testmod",
   "version": "1.0.0",
 
-  "name": "SGui (Fabric Test Mod)",
+  "name": "ServUI (Fabric Test Mod)",
   "description": "Library for creating server side guis!",
   "authors": [
-    "Patbox"
+    "Patbox",
+    "lemee"
   ],
   "contact": {
-    "homepage": "https://pb4.eu",
-    "sources": "https://github.com/Patbox/sgui"
+    "homepage": "https://github.com/jblemee/servui",
+    "sources": "https://github.com/jblemee/servui"
   },
 
   "license": "LGPLv3",
@@ -18,7 +19,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "eu.pb4.sgui.testmod.SGuiTest"
+      "co.lemee.servui.testmod.SGuiTest"
     ]
   }
 }

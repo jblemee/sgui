@@ -4,9 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-SGui (Server GUI) is a Minecraft mod library enabling server-side GUI creation. It's a multi-loader port of the original [Patbox/sgui](https://github.com/Patbox/sgui) library supporting both Fabric and NeoForge.
+ServUI (Server UI) is a Minecraft mod library enabling server-side GUI creation. It's a multi-loader fork of the original [Patbox/sgui](https://github.com/Patbox/sgui) library supporting both Fabric and NeoForge.
 
-- **Minecraft**: 1.21.5
+- **Minecraft**: 1.21.10
 - **Java**: 21
 - **Mappings**: Official Mojang mappings
 
@@ -39,7 +39,7 @@ neoforge/   # NeoForge-specific entry point, mixins, and metadata
 
 Each platform module shadows the common module into its JAR for standalone distribution.
 
-### Core Components (`common/src/main/java/eu/pb4/sgui/`)
+### Core Components (`common/src/main/java/co/lemee/servui/`)
 
 - **`api/gui/`**: GUI type implementations
   - `SimpleGui`: Container-based GUIs (chests, crafting tables, etc.)
@@ -68,7 +68,7 @@ Both platforms have `testmod` sourceSets. Run configurations for test mods are a
 
 ## Publishing to Modrinth
 
-The Modrinth API key is stored in `.env` (not versioned). Project URL: https://modrinth.com/mod/sgui
+The Modrinth API key is stored in `.env` (not versioned). Create a new project at https://modrinth.com for servui.
 
 To publish a new version, create one version per loader (fabric, neoforge):
 
@@ -80,7 +80,7 @@ source .env
 curl -X POST "https://api.modrinth.com/v2/version" \
   -H "Authorization: $MODRINTH_API_KEY" \
   -F 'data={
-    "name": "SGui VERSION-fabric",
+    "name": "ServUI VERSION-fabric",
     "version_number": "VERSION-fabric",
     "changelog": "Changelog here",
     "dependencies": [],
@@ -89,19 +89,19 @@ curl -X POST "https://api.modrinth.com/v2/version" \
     "loaders": ["fabric"],
     "featured": true,
     "status": "listed",
-    "project_id": "sgui",
+    "project_id": "servui",
     "file_parts": ["file"]
   }' \
-  -F "file=@output/sgui-VERSION-fabric.jar"
+  -F "file=@output/servui-VERSION-fabric.jar"
 
 # Repeat for neoforge (loaders: ["neoforge"])
 ```
 
-Replace `VERSION` with the version (e.g., `1.9.1+1.21.5`) and `MC_VERSION` with Minecraft version.
+Replace `VERSION` with the version (e.g., `1.9.1+1.21.10`) and `MC_VERSION` with Minecraft version.
 
 ## Publishing to CurseForge
 
-The CurseForge API key and project ID are stored in `.env`. Project ID: `1272255`
+The CurseForge API key and project ID are stored in `.env`. Create a new project at CurseForge for servui.
 
 Game version IDs (find new ones via `https://minecraft.curseforge.com/api/game/versions`):
 - **Loaders**: Fabric=`7499`, NeoForge=`10150`
@@ -117,11 +117,11 @@ curl -X POST "https://minecraft.curseforge.com/api/projects/$CURSEFORGE_PROJECT_
   -F 'metadata={
     "changelog": "Changelog here",
     "changelogType": "markdown",
-    "displayName": "SGui VERSION-fabric",
+    "displayName": "ServUI VERSION-fabric",
     "gameVersions": [MC_VERSION_ID, 7499],
     "releaseType": "release"
   }' \
-  -F "file=@output/sgui-VERSION-fabric.jar"
+  -F "file=@output/servui-VERSION-fabric.jar"
 
 # Repeat for neoforge (10150)
 ```
@@ -141,16 +141,14 @@ gh release create vMC_VERSION \
 - List changes here
 
 ### Downloads
-- **Fabric**: \`sgui-VERSION-fabric.jar\`
-- **NeoForge**: \`sgui-VERSION-neoforge.jar\`
-
-Also available on [Modrinth](https://modrinth.com/mod/sgui/versions?g=MC_VERSION)" \
+- **Fabric**: \`servui-VERSION-fabric.jar\`
+- **NeoForge**: \`servui-VERSION-neoforge.jar\`" \
   --target BRANCH_NAME \
-  output/sgui-VERSION-fabric.jar \
-  output/sgui-VERSION-neoforge.jar
+  output/servui-VERSION-fabric.jar \
+  output/servui-VERSION-neoforge.jar
 ```
 
-Replace `MC_VERSION` with Minecraft version (e.g., `1.21.5`), `VERSION` with full version (e.g., `1.9.1+1.21.5`), and `BRANCH_NAME` with the release branch.
+Replace `MC_VERSION` with Minecraft version (e.g., `1.21.10`), `VERSION` with full version (e.g., `1.9.1+1.21.10`), and `BRANCH_NAME` with the release branch.
 
 ## Commit/PR Guidelines
 
