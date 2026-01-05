@@ -1,26 +1,26 @@
 modLoader="javafml"
 loaderVersion="[4,)"
-issueTrackerURL="https://github.com/Patbox/sgui/issues"
+issueTrackerURL="https://github.com/jblemee/servui/issues"
 license="LGPLv3"
 
 [[mods]]
-modId="sguitest"
+modId="servuitest"
 version="1.0.0"
-displayName="Server GUI (Neoforge Test Mod)"
-displayURL="https://github.com/Patbox/sgui/releases"
+displayName="ServUI (Neoforge Test Mod)"
+displayURL="https://github.com/jblemee/servui/releases"
 logoFile="icon.png"
-authors="Patbox,aws404"
+authors="Patbox,aws404,lemee"
 description='''Library for creating server side guis!'''
 displayTest="IGNORE_ALL_VERSION"
 
-[[dependencies.sguitest]]
+[[dependencies.servuitest]]
     modId="neoforge"
     type="required"
     versionRange="[21.10,)"
     ordering="NONE"
     side="BOTH"
 
-[[dependencies.sguitest]]
+[[dependencies.servuitest]]
     modId="minecraft"
     type="required"
     versionRange="[1.21.10,)"

@@ -1,9 +1,9 @@
-# SGui (Server Gui)
-This is a port of the SGui Library that is a small, jij-able library that allows creation of server side guis.
+# ServUI (Server UI)
+This is a fork of the SGui Library that is a small, jij-able library that allows creation of server side guis.
 
-The goal is to allow Fabric mods that uses the original [SGui]([https://github.com/Patbox/sgui](https://github.com/Patbox/sgui)) to be ported on Neoforge, using this build.
+Based on the original [Patbox/sgui](https://github.com/Patbox/sgui) library, ServUI supports both Fabric and NeoForge.
 
-## Usage (for mod developpers):
+## Usage (for mod developers):
 Add it to your dependencies like this:
 
 - create a `lib` directory and put the jar in it.
@@ -11,13 +11,13 @@ Add it to your dependencies like this:
 
 ```
 repositories {
-    flatDir { 
+    flatDir {
         dir 'libs'
     }
 }
 
 dependencies {
-	modImplementation include("eu.pb4:sgui:1.9.1+1.21.5-neoforge") // Adapt it, it should match the jar your are using
+	modImplementation include("co.lemee:servui:1.9.1+1.21.10-neoforge") // Adapt it, it should match the jar you are using
 }
 ```
 
