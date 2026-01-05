@@ -165,7 +165,7 @@ public class SignGui implements GuiInterface {
             this.open = false;
             this.reOpen = false;
 
-            this.player.connection.send(new ClientboundBlockUpdatePacket(player.serverLevel(), signEntity.getBlockPos()));
+            this.player.connection.send(new ClientboundBlockUpdatePacket(player.level(), signEntity.getBlockPos()));
 
             if (alreadyClosed && this.player.containerMenu == this.screenHandler) {
                 this.player.doCloseContainer();

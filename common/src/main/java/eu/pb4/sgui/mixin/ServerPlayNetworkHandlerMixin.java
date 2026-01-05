@@ -264,9 +264,9 @@ public abstract class ServerPlayNetworkHandlerMixin extends ServerCommonPacketLi
                 var pos = packet.getHitResult().getBlockPos();
                 handler.syncSelectedSlot();
 
-                this.send(new ClientboundBlockUpdatePacket(pos, this.player.serverLevel().getBlockState(pos)));
+                this.send(new ClientboundBlockUpdatePacket(pos, this.player.level().getBlockState(pos)));
                 pos = pos.relative(packet.getHitResult().getDirection());
-                this.send(new ClientboundBlockUpdatePacket(pos, this.player.serverLevel().getBlockState(pos)));
+                this.send(new ClientboundBlockUpdatePacket(pos, this.player.level().getBlockState(pos)));
                 this.send(new ClientboundBlockChangedAckPacket(packet.getSequence()));
 
                 ci.cancel();
@@ -286,9 +286,9 @@ public abstract class ServerPlayNetworkHandlerMixin extends ServerCommonPacketLi
                     handler.syncOffhandSlot();
                 }
 
-                this.send(new ClientboundBlockUpdatePacket(pos, this.player.serverLevel().getBlockState(pos)));
+                this.send(new ClientboundBlockUpdatePacket(pos, this.player.level().getBlockState(pos)));
                 pos = pos.relative(packet.getDirection());
-                this.send(new ClientboundBlockUpdatePacket(pos, this.player.serverLevel().getBlockState(pos)));
+                this.send(new ClientboundBlockUpdatePacket(pos, this.player.level().getBlockState(pos)));
                 this.send(new ClientboundBlockChangedAckPacket(packet.getSequence()));
                 ci.cancel();
             }
