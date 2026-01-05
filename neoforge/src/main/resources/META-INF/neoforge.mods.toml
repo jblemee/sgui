@@ -22,13 +22,13 @@ displayTest="IGNORE_ALL_VERSION"
 [[dependencies.sgui]]
     modId="neoforge"
     type="required"
-    versionRange="[21.8,)"
+    versionRange="[21.10,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.sgui]]
     modId="minecraft"
     type="required"
-    versionRange="[1.21.8,)"
+    versionRange="[1.21.10,)"
     ordering="NONE"
     side="BOTH"
