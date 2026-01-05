@@ -32,3 +32,6 @@ bin/
 
 run/
 .architectury-transformer
+
+# Environment variables (API keys)
+.env
