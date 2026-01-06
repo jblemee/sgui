@@ -101,32 +101,56 @@ Replace `VERSION` with the version (e.g., `1.9.1+1.21.10`) and `MC_VERSION` with
 
 ## Publishing to CurseForge
 
-The CurseForge API key and project ID are stored in `.env`. Create a new project at CurseForge for servui.
+The CurseForge API key and project ID are stored in `.env`. Project ID: `1272255`
 
-Game version IDs (find new ones via `https://minecraft.curseforge.com/api/game/versions`):
-- **Loaders**: Fabric=`7499`, NeoForge=`10150`
-- **Minecraft versions**: check API for current IDs
+**Loader IDs:**
+- Fabric: `7499`
+- NeoForge: `10150`
 
-```bash
-# Load API key
-source .env
+**Note:** CurseForge auto-detects the Minecraft version from the jar file, so you only need to specify the loader ID in `gameVersions`.
 
-# Publish Fabric version
-curl -X POST "https://minecraft.curseforge.com/api/projects/$CURSEFORGE_PROJECT_ID/upload-file" \
-  -H "X-Api-Token: $CURSEFORGE_API_KEY" \
-  -F 'metadata={
-    "changelog": "Changelog here",
+```python
+# Upload using Python (recommended)
+python3 << 'EOF'
+import subprocess
+import json
+
+# Read .env
+with open('.env') as f:
+    env_vars = {}
+    for line in f:
+        if '=' in line and not line.startswith('#'):
+            key, value = line.strip().split('=', 1)
+            env_vars[key] = value
+
+api_key = env_vars['CURSEFORGE_API_KEY']
+project_id = env_vars['CURSEFORGE_PROJECT_ID']
+
+# Upload Fabric version
+metadata = {
+    "changelog": "## Changelog\n\nChanges here",
     "changelogType": "markdown",
     "displayName": "ServUI VERSION-fabric",
-    "gameVersions": [MC_VERSION_ID, 7499],
+    "gameVersions": [7499],  # Fabric loader only
     "releaseType": "release"
-  }' \
-  -F "file=@output/servui-VERSION-fabric.jar"
+}
 
-# Repeat for neoforge (10150)
+cmd = [
+    'curl', '-X', 'POST',
+    f'https://minecraft.curseforge.com/api/projects/{project_id}/upload-file',
+    '-H', f'X-Api-Token: {api_key}',
+    '-F', f'metadata={json.dumps(metadata)}',
+    '-F', 'file=@output/servui-VERSION-fabric.jar'
+]
+
+result = subprocess.run(cmd, capture_output=True, text=True)
+print(result.stdout)
+EOF
+
+# Repeat for NeoForge with gameVersions: [10150]
 ```
 
-Replace `VERSION` with full version, `MC_VERSION_ID` with the numeric Minecraft version ID from the API.
+Replace `VERSION` with full version (e.g., `1.9.1+1.21.10`).
 
 ## GitHub Releases
 
